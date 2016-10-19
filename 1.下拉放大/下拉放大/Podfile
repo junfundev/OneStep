@@ -1,0 +1,21 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '下拉放大' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for 下拉放大
+
+  target '下拉放大Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target '下拉放大UITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+ pod 'FDFullscreenPopGesture', '~> 1.1'
+ pod 'AFNetworking', '~> 3.1.0'
+end
