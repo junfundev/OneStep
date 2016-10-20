@@ -9,6 +9,7 @@
 #import "UserCenterController.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
 #import "UIView+Extension.h"
+#import "UIColor+Common.h"
 
 #define kHeaderViewH 200
 NSString *const cellID = @"reuseIdentifier";
@@ -20,7 +21,8 @@ NSString *const cellID = @"reuseIdentifier";
 @end
 
 @implementation UserCenterController{
-    UIImageView *_headerView;
+    UIView *_headerView;
+    UIImageView *_headerImageView;
 }
 
 
@@ -35,21 +37,25 @@ NSString *const cellID = @"reuseIdentifier";
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
     
     [self addHeaderView];
 }
 
 - (void)addHeaderView{
-    _headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderViewH)];
-    _headerView.backgroundColor = [UIColor redColor];
+    
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderViewH)];
+    _headerView.backgroundColor = [UIColor colorWithHexString:@"0xF8F8F8"];
     [self.view addSubview:_headerView];
-    _headerView.image = [UIImage imageNamed:@"boy.jpg"];
     
-    _headerView.contentMode = UIViewContentModeScaleAspectFill;
-    _headerView.clipsToBounds = YES;
+    _headerImageView = [[UIImageView alloc] initWithFrame:_headerView.bounds];
+    [_headerView addSubview:_headerImageView];
+    _headerImageView.image = [UIImage imageNamed:@"boy.jpg"];
+    _headerImageView.backgroundColor = [UIColor redColor];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
+    _headerImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _headerImageView.clipsToBounds = YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -75,16 +81,30 @@ NSString *const cellID = @"reuseIdentifier";
     
     CGFloat offset = scrollView.contentOffset.y+scrollView.contentInset.top;
     
-    NSLog(@"%f,%f,%f",scrollView.contentInset.top,scrollView.contentOffset.y,offset);
-    
     if (offset <= 0) { // 下拉
         _headerView.y = 0;
-    }
-    else{ // 上划
+        // 让headerView的高度始终等于偏移量
+        _headerView.height = kHeaderViewH-offset;
+        _headerImageView.height = _headerView.height;
         
     }
-    
-    _headerView.height = kHeaderViewH-offset;
+    else{ // 往上移动
+        // 往上移动的时候headerView的高度不变
+        _headerView.height = kHeaderViewH;
+        _headerImageView.height = _headerView.height;
+
+        // 只改变headerView的y值
+        
+        // 如果要headerView只保留64高度，则_headerView最多滑出kHeaderViewH-64
+        CGFloat min = kHeaderViewH-64;
+        _headerView.y = -MIN(min, offset);
+        
+        // 设置透明度
+        CGFloat progress = 1-(offset/min);
+        _headerImageView.alpha = progress;
+        NSLog(@"%f",progress);
+    }
 }
+
 
 @end

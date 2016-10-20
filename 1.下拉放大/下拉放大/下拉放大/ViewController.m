@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "UserCenterController.h"
-
+#import "ScrollImageController.h"
 
 @interface ViewController ()
 
@@ -21,12 +21,19 @@
     self.title = @"下拉放大Demo";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"去下拉放大" style:UIBarButtonItemStylePlain target:self action:@selector(dropDwon)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"轮播图" style:UIBarButtonItemStylePlain target:self action:@selector(scroll)];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下拉放大" style:UIBarButtonItemStylePlain target:self action:@selector(dropDwon)];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+}
+
+- (void)scroll{
+    ScrollImageController *user = [[ScrollImageController alloc] init];
+    [self.navigationController pushViewController:user animated:YES];
 }
 
 - (void)dropDwon{
@@ -41,3 +48,4 @@
 
 
 @end
+
