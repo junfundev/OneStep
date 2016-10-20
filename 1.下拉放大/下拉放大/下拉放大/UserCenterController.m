@@ -19,7 +19,9 @@ NSString *const cellID = @"reuseIdentifier";
 
 @end
 
-@implementation UserCenterController
+@implementation UserCenterController{
+    UIImageView *_headerView;
+}
 
 
 - (void)viewDidLoad {
@@ -38,9 +40,13 @@ NSString *const cellID = @"reuseIdentifier";
 }
 
 - (void)addHeaderView{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderViewH)];
-    view.backgroundColor = [UIColor redColor];
-    [self.view addSubview:view];
+    _headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderViewH)];
+    _headerView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_headerView];
+    _headerView.image = [UIImage imageNamed:@"boy.jpg"];
+    
+    _headerView.contentMode = UIViewContentModeScaleAspectFill;
+    _headerView.clipsToBounds = YES;
     
     self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
@@ -65,19 +71,20 @@ NSString *const cellID = @"reuseIdentifier";
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat offset = scrollView.contentOffset.y+scrollView.contentInset.top;
+    
+    NSLog(@"%f,%f,%f",scrollView.contentInset.top,scrollView.contentOffset.y,offset);
+    
+    if (offset <= 0) { // 下拉
+        _headerView.y = 0;
+    }
+    else{ // 上划
+        
+    }
+    
+    _headerView.height = kHeaderViewH-offset;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
