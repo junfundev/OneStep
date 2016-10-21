@@ -23,6 +23,7 @@
 		911F32231DB8FF0900AFEC0F /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 911F32221DB8FF0900AFEC0F /* UIColor+Common.m */; };
 		911F32261DB9039A00AFEC0F /* WYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 911F32251DB9039A00AFEC0F /* WYScrollView.m */; };
 		911F32291DB9043B00AFEC0F /* ScrollImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 911F32281DB9043B00AFEC0F /* ScrollImageController.m */; };
+		91C1239E1DBA1A1500DB2E77 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C1239D1DBA1A1500DB2E77 /* NSTimer+Addition.m */; };
 		9370EC99416009ACB7BE5A6E /* libPods-下拉放大.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A0E210A2386ADF024AD444 /* libPods-下拉放大.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		911F32251DB9039A00AFEC0F /* WYScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYScrollView.m; sourceTree = "<group>"; };
 		911F32271DB9043B00AFEC0F /* ScrollImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollImageController.h; sourceTree = "<group>"; };
 		911F32281DB9043B00AFEC0F /* ScrollImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollImageController.m; sourceTree = "<group>"; };
+		91C1239C1DBA1A1500DB2E77 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		91C1239D1DBA1A1500DB2E77 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		9AB2B2B877F0E3589543775C /* Pods-下拉放大Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-下拉放大Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-下拉放大Tests/Pods-下拉放大Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD7C8FF6184E15D108B6B71D /* libPods-下拉放大UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-下拉放大UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC2D908BC2239CF1B2D1D49 /* Pods-下拉放大.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-下拉放大.release.xcconfig"; path = "Pods/Target Support Files/Pods-下拉放大/Pods-下拉放大.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				911F32251DB9039A00AFEC0F /* WYScrollView.m */,
 				911F32271DB9043B00AFEC0F /* ScrollImageController.h */,
 				911F32281DB9043B00AFEC0F /* ScrollImageController.m */,
+				91C1239C1DBA1A1500DB2E77 /* NSTimer+Addition.h */,
+				91C1239D1DBA1A1500DB2E77 /* NSTimer+Addition.m */,
 			);
 			path = "下拉放大";
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				911F31EE1DB7CEC500AFEC0F /* ViewController.m in Sources */,
 				911F321B1DB7CF4800AFEC0F /* UserCenterController.m in Sources */,
 				911F31EB1DB7CEC500AFEC0F /* AppDelegate.m in Sources */,
+				91C1239E1DBA1A1500DB2E77 /* NSTimer+Addition.m in Sources */,
 				911F31E81DB7CEC500AFEC0F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
